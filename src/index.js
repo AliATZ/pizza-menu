@@ -66,9 +66,8 @@ function Header() {
 function Menu(){
     return <main className="menu">
         <h2>Our menu </h2>
-        <Pizza />
-        <Pizza />
-        <Pizza />
+        <Pizza name="pizza spinaci" ingredients="Tomato, mozarella, spinach, and ricotta cheese" photoName="pizzas/spinaci.jpg" price={10}/>
+        <Pizza name="pizza funghi" ingredients="tomato, mushrooms" price={10} photoName="pizzas/funghi.jpg"/>
     </main>
 }
 
@@ -87,12 +86,15 @@ function Footer() {
 
 }
 
-function Pizza(){
-    return <div>
-        <img src="../../pizza_menu/public/pizzas/spinaci.jpg" alt="Pizza Spinaci" />
-        <h3>Pizza Spinaci!</h3>
-        <p>Tomato, mozarella, spinach, and ricotta cheese</p>
-    </div>;
+function Pizza(props){
+    return <div className="pizza">
+        <img src={props.photoName} alt={props.name}/>
+        <div>
+        <h3>{props.name}</h3>
+        <p>{props.prop}</p>
+            <span>{props.price}</span>
+        </div>
+        </div>;
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
