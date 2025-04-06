@@ -48,12 +48,36 @@ const pizzaData = [
 ];
 function App() {
     return <div>
-        <h1>Hello World!</h1>
-        <Pizza/>
-        <Pizaa/>
-        <Pizaa/>
+        <Header/>
+        <Menu/>
+        <Footer/>
     </div>;
 }
+
+function Header() {
+    return <h1>fast react co.</h1>
+}
+
+function Menu(){
+    return <div>
+        <h2>Our menu </h2>
+        <Pizza/>
+        <Pizza/>
+        <Pizza/>
+    </div>
+}
+
+function Footer() {
+    const hour = new Date().getHours();
+    const openHour =12;
+    const closeHour =22;
+
+    // if (hour >= openHour && hour <= closeHour) {
+    //     alert('we are open!')
+    // } else {alert('we are closed!')}
+
+}
+
 function Pizza(){
     return <div>
         <img src="pizzas/spinachi.jpg" alt="Pizza Spinaci" />
