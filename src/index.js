@@ -66,8 +66,11 @@ function Header() {
 function Menu(){
     return <main className="menu">
         <h2>Our menu </h2>
-        <Pizza name="pizza spinaci" ingredients="Tomato, mozarella, spinach, and ricotta cheese" photoName="pizzas/spinaci.jpg" price={10}/>
-        <Pizza name="pizza funghi" ingredients="tomato, mushrooms" price={10} photoName="pizzas/funghi.jpg"/>
+        <ul className='pizzas' >
+            {pizzaData.map((pizza) => (<Pizza pizzaObj={pizza} key={pizza.name} />))}
+        </ul>
+        {/*<Pizza name="pizza spinaci" ingredients="Tomato, mozarella, spinach, and ricotta cheese" photoName="pizzas/spinaci.jpg" price={10}/>*/}
+        {/*<Pizza name="pizza funghi" ingredients="tomato, mushrooms" price={10} photoName="pizzas/funghi.jpg"/>*/}
     </main>
 }
 
@@ -75,26 +78,30 @@ function Footer() {
     const hour = new Date().getHours();
     const openHour =12;
     const closeHour =22;
+    const isOpen= hour>=openHour && hour<=closeHour;
 
     // if (hour >= openHour && hour <= closeHour) {
     //     alert('we are open!')
     // } else {alert('we are closed!')}
 
     return <footer className="footer">
-        {new Date().toLocaleTimeString()}. we are open
+        {isOpen && <div>
+            <p>we are open until {closeHour}:00</p>
+            <button className="btn">Order</button>
+        </div>}
     </footer>
 
 }
 
 function Pizza(props){
-    return <div className="pizza">
-        <img src={props.photoName} alt={props.name}/>
+    return <li className="pizza">
+        <img src={props.pizzaObj.photoName} alt={props.name}/>
         <div>
-        <h3>{props.name}</h3>
-        <p>{props.prop}</p>
-            <span>{props.price}</span>
+        <h3>{props.pizzaObj.name}</h3>
+        <p>{props.pizzaObj.ingredients}</p>
+            <span>{props.pizzaObj.price}</span>
         </div>
-        </div>;
+        </li>;
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
